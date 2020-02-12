@@ -8,18 +8,22 @@ for(i=1:n) {
     如果不符合条件
         窗口右端右移
     while (符合) {
-        更新结果
+        `更新结果` // 这里确保符合, 而且是全部的符合
         窗口左端右移
     }
 }
 ```
-## 举例
+## 举例 字符串匹配中的应用
 
-### 76.MinimumWindowSubstring
+### [3.无重复字符的最长子串](../hash/Test3.cc)
+
+### [76.MinimumWindowSubstring](../binSearch_2Ptr/Test76.cc)
 > Input: S = "ADOBECODEBANC", T = "ABC"
 > Output: "BANC"
 
 
+### [438.找到字符串中所有字母异位词](../binSearch_2Ptr/Test438.cc)
+只需要把上题的条件限制一下就完全可以了
 
 ### 209.MinimumSizeSubarraySum
 > 返回连续子序列大于目标value的最小长度

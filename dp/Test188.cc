@@ -37,47 +37,6 @@ using namespace std;
 // };
 
 
-// 把一次买/一次卖都当是一次交易，那么总的交易数字是2*k，0表示没有交易,0天代表没有股票
-// dp[0][0] = 0 0天么有交易，钱最大是0
-// dp[t][0] 当是第0天的时候，t(t>=1)次交易，第0天没有交易，所以是-100000
-
-class Solution {
-public:
-    int maxProfit(int k, vector<int>& prices) {
-        if(!prices.size()) return 0;
-        if(k >= prices.size()/2)
-        {
-            int sum = 0;
-            for(int i = 1; i < prices.size(); i++)
-            {
-                int val = prices[i] - prices[i - 1];
-                sum += (val > 0? val: 0);
-            }
-            return sum;
-        }
-
-        vector<vector<int>> dp(k * 2 + 1, vector<int>(prices.size() + 1, 0));
-        for(int t = 1; t <= 2 * k; t += 2)
-            dp[t][0] = -1000000;
-
-        for(int t = 1; t <= 2 * k; t++)
-        {
-            for(int i = 1; i <= prices.size(); i++)
-            {
-                if(t%2 == 1)//买入
-                {   // 1. 前一天没有交易今天交易  dp[t-1][i-1] - prices[i-1] 或者前一天就t次交易了
-                    // ps 因为i从1起所以-1
-                    dp[t][i] = max(dp[t - 1][i - 1] - prices[i - 1], dp[t][i - 1]);
-                }
-                else//卖出
-                {
-                    dp[t][i] = max(dp[t - 1][i - 1] + prices[i - 1], dp[t][i - 1]);
-                }
-            }
-        }
-        return dp[k * 2][prices.size()];
-    }
-};
 
 
 
@@ -112,11 +71,36 @@ public:
 //     }
 // };
 
+// dp0[i,j]第i天第j次购买股票的收益
+
+
+class Solution {
+public:
+    int maxProfit(int k, vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<int>> dp0(n+1, vector<int>(k+1, 0));
+        vector<vector<int>> dp1(n+1, vector<int>(k+1, 0));
+
+        // 初始值有点迷, 不持有股票的dp0[0][i]也不可能啊
+        for(int i = 0; i <= n; i++)     dp1[i][0] = -100000;
+        for(int i = 0; i <= k; i++)     dp1[0][i] = -100000;
+
+
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= k; j++) {
+                dp0[i][j] = max(dp0[i-1][j], dp1[i-1][j] + prices[i-1]);
+                dp1[i][j] = max(dp1[i-1][j], dp0[i-1][j-1] - prices[i-1]);
+            }
+        }
+        return dp0[n][k];
+    }
+};
 
 int main(int argc, char const *argv[])
 {
-    vector<int> ivec{3,3,5,0,0,3,1,4};
+    vector<int> ivec{2,4,1};
     Solution s;
-    s.maxProfit(2, ivec);
+    cout << s.maxProfit(2, ivec) << endl;
     return 0;
 }
+

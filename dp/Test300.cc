@@ -4,6 +4,7 @@
 #include <cstring>
 #include <vector>
 #include <memory>
+#include <stack>
 #include <climits>
 #include <map>
 using namespace std;
@@ -63,6 +64,12 @@ public:
             res = max (res, dp[i]);
         }
         return res;
+    }
+
+    // 单调栈尝试  不行
+    // eg 4 25 3 50 单调栈到了3, 会把前面的4 25抛弃, 正确的答案是4 25 50; 显然是不可以的
+    int lengthOfLIS(vector<int>& nums) {
+        stack<int> s;
     }
 };
 

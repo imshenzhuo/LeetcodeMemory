@@ -1,3 +1,4 @@
+
 动态规划
 
 经典题目 
@@ -92,3 +93,14 @@ Distinct Ways
 Merging Intervals
 DP on Strings
 Decision Making
+
+
+有的dp是顺序遍历过程中, 从后往前的
+eg 回文切割 & word break
+``` C
+for (int i = 0; i < s.size(); i++) {
+    for(int j = i - 1; j >= 0; j++) {
+        ...
+    }
+}
+```

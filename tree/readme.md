@@ -117,4 +117,5 @@ return res;
 1. [二叉树变双向链表](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)
 2. [树的子结构](https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/)
 3. [判断平衡二叉树](https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/) 编码设置-1是非平衡二叉树
+4. [注意**叶子**](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
 

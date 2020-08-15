@@ -110,3 +110,8 @@ return res;
 
 1. [Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/) 遍历 + 保存之前的信息
 2. [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) 最长路径 ❀
+
+## 其他
+[二叉树变双向链表](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)
+[树的子结构](https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/)
+

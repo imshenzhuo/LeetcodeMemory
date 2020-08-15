@@ -4,7 +4,7 @@
 非递归遍历实际上是BFS广度优先搜索
 
 大部分的问题靠简单递归就可以解决
-1. [Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/)
+1. [Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/) (很久没看，这题咋一下差点把我整蒙了)
 2. [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
 3. [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)最长路径 ❀
 

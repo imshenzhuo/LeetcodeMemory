@@ -81,8 +81,8 @@ return reverse(res.begin(), res.end());
 
 
 ## 层次遍历
-[Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/)
-[Cousins in Binary Tree](https://leetcode.com/problems/cousins-in-binary-tree/)
+1. [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/)
+2. [Cousins in Binary Tree](https://leetcode.com/problems/cousins-in-binary-tree/)
 
 
 ### 迭代方法
@@ -112,6 +112,6 @@ return res;
 2. [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) 最长路径 ❀
 
 ## 其他
-[二叉树变双向链表](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)
-[树的子结构](https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/)
+1. [二叉树变双向链表](https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)
+2. [树的子结构](https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/)
 

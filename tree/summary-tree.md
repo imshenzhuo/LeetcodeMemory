@@ -12,7 +12,7 @@
 ## 顺序遍历
 
 1. [Range Sum of BST](https://leetcode.com/problems/range-sum-of-bst/)
-2. [Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/)
+2. [Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/) (不慌,写的比以前更好了)
 3. [Search in a Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/)
 
 ### 先序遍历

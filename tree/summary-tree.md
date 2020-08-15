@@ -4,17 +4,16 @@
 非递归遍历实际上是BFS广度优先搜索
 
 大部分的问题靠简单递归就可以解决
-[Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/)
-[Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
-[Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)
-最长路径 ❀
+1. [Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/)
+2. [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
+3. [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)最长路径 ❀
 
 
 ## 顺序遍历
 
-[Range Sum of BST](https://leetcode.com/problems/range-sum-of-bst/)
-[Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/)
-[Search in a Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/)
+1. [Range Sum of BST](https://leetcode.com/problems/range-sum-of-bst/)
+2. [Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/)
+3. [Search in a Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/)
 
 ### 先序遍历
 非递归:  使用stack存储root节点
@@ -109,7 +108,5 @@ return res;
 
 ## path相关
 
-[Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/)
-遍历 + 保存之前的信息
-[Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)
-最长路径 ❀
+1. [Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/) 遍历 + 保存之前的信息
+2. [Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) 最长路径 ❀

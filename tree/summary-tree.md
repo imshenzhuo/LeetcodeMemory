@@ -16,19 +16,20 @@
 3. [Search in a Binary Search Tree](https://leetcode.com/problems/search-in-a-binary-search-tree/)
 
 ### 先序遍历
-非递归:  使用stack存储root节点
+非递归:  使用stack存储root节点 **stack**
+```
         while stack 不为空
-            从stack中pop出父节点
-            父节点访问
-            从后往前push父节点的子节点
+                从stack中pop出父节点
+                父节点访问
+                从后往前push父节点的子节点
+```
 
 [N-ary Tree Preorder Traversal](https://leetcode.com/problems/n-ary-tree-preorder-traversal/)
 
 
 
 ### 后序遍历
-后序遍历的非递归要比先序遍历的非递归麻烦一些
-有两种方法
+后序遍历的非递归要比先序遍历的非递归稍微麻烦一些 **stack + list**
 
 #### 利用list等插入效率高的数据结构
 ``` cpp
@@ -40,26 +41,6 @@ while(!nstack.empty()) {
     for(auto child : t->children) nstack.push(child);
 }
 return res;
-```
-
-### 中序遍历
-只有二叉树才有中序遍历
-``` c++
-class Solution {
-public:
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> nodes;
-        std::stack<TreeNode*> toVisit;
-        while(1) {
-            while(root) { toVisit.push(root); root=root->left; }
-            if(toVisit.empty()) break;
-            root=toVisit.top(); toVisit.pop();
-            nodes.push_back(root->val);
-            root=root->right;
-        }
-        return nodes;
-    }
-};
 ```
 
 
@@ -78,6 +59,27 @@ return reverse(res.begin(), res.end());
 > 发现个规律, 子节点的push 先序就反向 后序就正向
 
 [N-ary Tree Postorder Traversal](https://leetcode.com/problems/n-ary-tree-postorder-traversal/)
+
+
+### 中序遍历
+只有二叉树才有中序遍历
+``` c++
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> nodes;
+        std::stack<TreeNode*> toVisit;
+        while(1) {
+            while(root) { toVisit.push(root); root=root->left; } // 掏空
+            if(toVisit.empty()) break; 
+            root=toVisit.top(); toVisit.pop(); // 掏空完了拿一个补充
+            nodes.push_back(root->val); 
+            root=root->right; // 准备继续掏空
+        }
+        return nodes;
+    }
+};
+```
 
 
 ## 层次遍历

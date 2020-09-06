@@ -1,0 +1,73 @@
+/*局域网TCP客户端*/
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <stdio.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <sys/shm.h>
+ 
+#define MYPORT  7000
+#define BUFFER_SIZE 1024
+ 
+int main()
+{
+    signal(SIGPIPE, SIG_IGN);    
+    int sock_cli = socket(AF_INET,SOCK_STREAM, 0); //定义sockfd
+    struct sockaddr_in servaddr;                    //定义sockaddr_in
+    memset(&servaddr, 0, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(MYPORT);  //服务器端口
+    servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");  //服务器ip，inet_addr用于IPv4的IP转换（十进制转换为二进制）
+    if (connect(sock_cli, (struct sockaddr *)&servaddr, sizeof(servaddr)) < 0) {
+        perror("connect");
+        exit(1);
+    }
+    printf("connnected!!\n");
+ 
+    char sendbuf[BUFFER_SIZE];
+    char recvbuf[BUFFER_SIZE];
+ 
+    while (fgets(sendbuf, sizeof(sendbuf), stdin) != NULL) {
+        /*每次读取一行，读取的数据保存在buf指向的字符数组中，成功，则返回第一个参数buf；*/
+        if(strcmp(sendbuf,"exit\n") == 0)
+            break;
+        int send_len = send(sock_cli, sendbuf, strlen(sendbuf),0); ///发送
+        printf("clinet send %d bytes data\n", send_len);
+        if (send_len < 0) {
+            printf("close\n");
+            close(sock_cli);
+        }
+        int recv_len = recv(sock_cli, recvbuf, sizeof(recvbuf),0); ///接收
+        printf("clinet recv %d bytes data\n", recv_len);
+        fputs(recvbuf, stdout);
+        memset(sendbuf, 0, sizeof(sendbuf));//接受或者发送完毕后把数组中的数据全部清空（置0）
+        memset(recvbuf, 0, sizeof(recvbuf));
+    }
+    printf("::::\n");
+
+    /**
+     * 测试3: close函数只有在引用数为0的时候才会四次挥手断开连接
+     * 方法 : 在调用close前调用fork函数, 这样就有两个进程, 引用数是2, 其中子进程调用close, 父进程阻塞观察
+     * 结果 : 子进程虽然调用了close, 但是并没有四次挥手, 只有父进程结束文件描述符关闭才会断开连接
+     */ 
+    pid_t p = fork();
+    if (p == 0) {
+        shutdown(sock_cli, 2);
+        printf("close!\n");
+    } else {
+        getchar();
+    }
+
+    // 默认情况
+    // close(sock_cli);
+    return 0;
+}
+/*在TCP三次握手完成后会进入等待连接队列，等待服务端调用accpet与之建立连接，这时候是server端调用accept跟客户端建立
+通信，客户端并不需要调用accpet，因为有很多个客户端要跟服务端建立连接，这时候服务端就会有一个队列，对已经经过三次握
+手的才可以建立连接（类似缓存信息），这个是由服务端来确认的，客户端并不知道什么时候服务端才能跟它建立连接，在服务端
+没有调用accept与之连接或者还未排队到它，只能是一直等待，直到服务端准备好了才能跟客户端建立连接，所以主动权在服务端*/

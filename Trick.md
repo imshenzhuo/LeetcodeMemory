@@ -53,3 +53,12 @@ vector<int> ivec;
 ivec.push_back(....);
 ivvec.push_back(ivec);
 ```
+
+
+### algorithm
+
+[nth_element](https://www.inf.pucrs.br/~flash/lapro2ec/cppreference/w/cpp/algorithm/nth_element.html)
+
+
+默认升序，使得[first, nth)的参数小于参数 [nth, last)，从而快速求得第k个参数
+
